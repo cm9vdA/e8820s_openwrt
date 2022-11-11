@@ -60,7 +60,7 @@ make_defconfig() {
 
     let index+=1
     echo "${index}. Set Time Zone"
-    sed -i "s/'UTC'/'CST-8'\n                set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+    sed -i "s/'UTC'/'CST-8'\n		set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
     git checkout package/kernel/mac80211/files/lib/wifi/mac80211.sh
     let index+=1
