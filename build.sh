@@ -88,9 +88,9 @@ make_defconfig() {
     # echo "${index}. Set Kernel Version To 5.10"
     # sed -i 's/5.4/5.10/g' target/linux/ramips/Makefile
 
-    let index+=1
-    echo "${index}. Set Default Theme"
-    sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
+    # let index+=1
+    # echo "${index}. Set Default Theme"
+    # sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
 
     let index+=1
     echo "${index}. Copy default config"
@@ -142,7 +142,7 @@ make_img() {
     fi
 
     cd ${SRC_PATH}
-    rm -rf ./tmp
+    # rm -rf ./tmp
     make -j$(nproc)
     if [ $? -eq 0 ]; then
         echo "BIN PATH: ${BIN_PATH}"
