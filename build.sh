@@ -65,7 +65,7 @@ make_defconfig() {
     git checkout package/kernel/mac80211/files/lib/wifi/mac80211.sh
     let index+=1
     echo "${index}. Set Open Source Driver SSID"
-    sed -i 's/OpenWrt/ZTE_$/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+    sed -i 's/OpenWrt/ZTE/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
     git checkout package/lean/mt/drivers/mt_wifi/files/mt7603.dat
     git checkout package/lean/mt/drivers/mt_wifi/files/mt7612.dat
@@ -87,6 +87,10 @@ make_defconfig() {
     # git checkout target/linux/ramips/Makefile
     # echo "${index}. Set Kernel Version To 5.10"
     # sed -i 's/5.4/5.10/g' target/linux/ramips/Makefile
+
+    let index+=1
+    echo "${index}. Set Default Theme"
+    sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
 
     let index+=1
     echo "${index}. Copy default config"
