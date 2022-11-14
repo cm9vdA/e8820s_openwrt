@@ -150,6 +150,15 @@ make_img() {
     fi
 }
 
+prepare_closed_source() {
+    cat <<EOF >package/base-files/files/etc/init.d/wifi_up
+ifconfig ra0 up
+ifconfig rai0 up
+brctl addif br-lan ra0
+brctl addif br-lan rai0"
+EOF
+}
+
 show_menu() {
     local option
     echo "================ Menu Option ================"
