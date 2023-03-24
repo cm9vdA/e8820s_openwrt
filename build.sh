@@ -143,7 +143,11 @@ make_img() {
 
     cd ${SRC_PATH}
     # rm -rf ./tmp
-    make -j$(nproc)
+    if [ "$1" = "debug" ]; then
+        make -j1 V=s
+    else
+        make -j $(nproc)
+    fi
     if [ $? -eq 0 ]; then
         echo "BIN PATH: ${BIN_PATH}"
         ls -lh "${BIN_PATH}"
@@ -170,6 +174,7 @@ show_menu() {
     echo -e "\t[3]. Build"
     echo -e "\t[31] ├─Download"
     echo -e "\t[32] └─Build Image"
+    echo -e "\t[33] └─Build Image(For Check Error)"
     echo -e "\t[4]. Archive"
     echo -e "\t[5]. Clean"
 
@@ -201,6 +206,9 @@ show_menu() {
         ;;
     "32")
         make_img
+        ;;
+    "33")
+        make_img debug
         ;;
     "4")
         archive_img
